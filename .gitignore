@@ -1,0 +1,9 @@
+env
+images
+*.log
+.env
+__pycache__
+*.DS_Store
+settings.py
+*.txt
+!reguirements.txt
