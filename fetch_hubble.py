@@ -1,5 +1,5 @@
 import requests
-from preparation_images import get_picture
+from preparation_images import save_picture
 
 
 HUBBLE_URL = 'http://hubblesite.org/api/v3/image'
@@ -17,7 +17,7 @@ def fetch_hubble_image(image_id, url=HUBBLE_URL):
     hubble_image_info = response.json()
     hubble_image_url = f"https:{hubble_image_info['image_files'][-1]['file_url']}"
     filename_hubble_image = f'image_{image_id}.{get_image_extension(hubble_image_url)}'
-    get_picture(filename_hubble_image, hubble_image_url)
+    save_picture(filename_hubble_image, hubble_image_url)
 
 
 def fetch_image_id(collection_name, url=HUBBLE_URL):

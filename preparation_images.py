@@ -15,7 +15,7 @@ ImageFile.LOAD_TRUNCATED_IMAGES = True
 logging.basicConfig(filename='app.log', filemode='w')
 
 
-def get_picture(filename, url, name_dir=DIR_NAME):
+def save_picture(filename, url, name_dir=DIR_NAME):
     file_path = os.path.join(name_dir, filename)
     response = requests.get(url, verify=False)
     response.raise_for_status()
@@ -23,10 +23,10 @@ def get_picture(filename, url, name_dir=DIR_NAME):
     with open(file_path, 'wb') as file:
         file.write(response.content)
 
-    cropped_image(filename)
+    crop_image(filename)
 
 
-def cropped_image(image_name):
+def crop_image(image_name):
     try:
         image = Image.open(f'images/{image_name}')
         if image.width > image.height:
