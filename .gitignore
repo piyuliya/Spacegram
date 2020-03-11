@@ -7,3 +7,5 @@ __pycache__
 settings.py
 *.txt
 !reguirements.txt
+*.json
+*.checkpoint
