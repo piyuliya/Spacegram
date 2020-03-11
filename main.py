@@ -1,7 +1,6 @@
 from fetch_spacex import fetch_spacex_last_launch
 from fetch_hubble import fetch_image_id
 
-
 COLLECTOIN_NAME = 'spacecraft'
 
 

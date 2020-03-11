@@ -6,6 +6,6 @@ __pycache__
 *.DS_Store
 settings.py
 *.txt
-!reguirements.txt
+!requirements.txt
 *.json
 *.checkpoint
