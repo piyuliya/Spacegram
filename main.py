@@ -1,9 +1,9 @@
-from fetch_spacex import fetch_spacex_last_launch
-from fetch_hubble import fetch_image_id
+from fetch_spacex import fetch_image_spacex_last_launch
+from fetch_hubble import fetch_image_hubble
 
-COLLECTOIN_NAME = 'spacecraft'
+COLLECTOIN_NAME = 'news'
 
 
 if __name__ == "__main__":
-    fetch_spacex_last_launch()
-    fetch_image_id(COLLECTOIN_NAME)
+    fetch_image_spacex_last_launch()
+    fetch_image_hubble(COLLECTOIN_NAME)

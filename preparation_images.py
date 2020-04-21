@@ -19,11 +19,9 @@ def save_picture(filename, url, name_dir=DIR_NAME):
     file_path = os.path.join(name_dir, filename)
     response = requests.get(url, verify=False)
     response.raise_for_status()
-
     with open(file_path, 'wb') as file:
         file.write(response.content)
-
-    crop_image(filename)
+    return filename
 
 
 def crop_image(image_name):
@@ -35,13 +33,19 @@ def crop_image(image_name):
             coordinates = (delta_left, 0, delta_right, image.height)
             cropped = image.crop(coordinates)
             cropped.save(f'images/{image_name}')
-            upload_photo(image_name)
+            return image_name
         else:
             delta_left = int((image.height - image.width)/2)
             delta_right = int(image.height - delta_left)
             coordinates = (0, delta_left, image.width, delta_right)
             cropped = image.crop(coordinates)
             cropped.save(f'images/{image_name}')
-            upload_photo(image_name)
+            return image_name
     except PIL.UnidentifiedImageError:
         logging.exception('cannot identify image file')
+
+
+def post_image_in_instagram(filename, url):
+    filename_for_crop_image = save_picture(filename, url)
+    image_name_for_upload = crop_image(filename_for_crop_image)
+    upload_photo(image_name_for_upload)
