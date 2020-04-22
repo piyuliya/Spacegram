@@ -8,7 +8,6 @@ HUBBLE_URL = 'http://hubblesite.org/api/v3/image'
 
 def get_image_extension(url):
     image_extension = os.path.splitext(url)[1]
-    print(image_extension)
     return image_extension
 
 
